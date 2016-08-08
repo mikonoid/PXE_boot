@@ -1,0 +1,220 @@
+default menu.c32
+prompt 0
+timeout 300000
+ONTIMEOUT local
+
+MENU TITLE PXE Menu
+
+LABEL local
+    MENU LABEL Boot local hard drive
+    LOCALBOOT 0
+
+LABEL Memtest
+    MENU LABEL Memtest
+    kernel memdisk
+    APPEND initrd=memtest/memtest floppy
+    
+LABEL SystemRescueCD
+    MENU LABEL SystemRescueCD
+    kernel memdisk
+    APPEND append iso raw initrd=memtest/systemrescuecd.iso ramdisk_size=100000
+    
+LABEL VictoriaHDD
+    MENU LABEL VictoriaHDD
+    kernel memdisk
+    APPEND append iso raw initrd=memtest/victoria.iso ramdisk_size=100000
+            
+                
+
+LABEL Centos_5.10_x86_64
+        MENU LABEL Centos_5.10_x86_64
+        kernel centos/5.10_x86_64/vmlinuz
+	append noapic initrd=centos/5.10_x86_64/initrd.img root=/dev/ram0 method=http://192.168.100.10/centos/5.10_x86_64 init=/linuxrc ramdisk_size=100000
+
+LABEL Centos_5.10_i386
+        MENU LABEL Centos_5.10_i386
+	kernel centos/5.10_i386/vmlinuz
+        append noapic initrd=centos/5.10_i386/initrd.img root=/dev/ram0 method=http://192.168.100.10/centos/5.10_i386 init=/linuxrc ramdisk_size=100000
+                
+
+LABEL Centos_6.5_minimal_x86_64
+        MENU LABEL Centos_6.5_minimal_x86_64
+        kernel centos/6.5_minimal_x86_64/vmlinuz
+        append noapic initrd=centos/6.5_minimal_x86_64/initrd.img root=/dev/ram0 method=http://192.168.100.10/centos/6.5_minimal_x64 init=/linuxrc ramdisk_size=100000
+        
+LABEL Centos_6.5_minimal_i386
+        MENU LABEL Centos_6.5_minimal_i386
+        kernel centos/6.5_minimal_i386/vmlinuz
+        append noapic initrd=centos/6.5_minimal_i386/initrd.img root=/dev/ram0 method=http://192.168.100.10/centos/6.5_minimal_i386 init=/linuxrc ramdisk_size=100000
+
+#centos 6.6
+
+#LABEL Centos_6.6_minimal_i386#
+#	MENU LABEL Centos_6.6_minimal_i386
+#        kernel centos/6.6_minimal_i386/vmlinuz
+#        append noapic initrd=centos/6.6_minimal_i386/initrd.img root=/dev/ram0 method=http://192.168.100.10/centos/6.6_minimal_i386 init=/linuxrc ramdisk_size=100000
+
+#LABEL Centos_6.6_minimal_x86_64
+#	MENU LABEL Centos_6.6_minimal_x86_64
+#        kernel centos/6.6_minimal_x86_64/vmlinuz
+#        append noapic initrd=centos/6.6_minimal_x86_64/initrd.img root=/dev/ram0 method=http://192.168.100.10/centos/6.6_minimal_x86_64 init=/linuxrc ramdisk_size=100000
+
+LABEL Centos_6.7_minimal_i386
+	MENU LABEL Centos_6.7_minimal_i386
+        kernel centos/6.7_minimal_i386/vmlinuz
+        append noapic initrd=centos/6.7_minimal_i386/initrd.img root=/dev/ram0 method=http://192.168.100.10/centos/6.7_minimal_i386 init=/linuxrc ramdisk_size=100000
+        
+LABEL Centos_6.7_minimal_x86_64
+	MENU LABEL Centos_6.7_minimal_x86_64
+        kernel centos/6.7_minimal_x86_64/vmlinuz
+        append noapic initrd=centos/6.7_minimal_x86_64/initrd.img root=/dev/ram0 method=http://192.168.100.10/centos/6.7_minimal_x86_64 init=/linuxrc ramdisk_size=100000                                
+        
+LABEL Centos_7_x86_64
+        MENU LABEL Centos_7_x86_64
+        kernel centos/7_x86_64/vmlinuz
+        append  initrd=centos/7_x86_64/initrd.img ip=dhcp  repo=http://192.168.100.10/centos/7_x86_64  ramdisk_size=100000
+
+LABEL Ubuntu_Server_13.10_i386
+        MENU LABEL Ubuntu_Server_13.10_i386
+        kernel ubuntu/13.10_server_i386/vmlinuz
+        append initrd=ubuntu/13.10_server_i386/initrd.gz root=/dev/ram0  ramdisk_size=100000
+        
+LABEL Ubuntu_Server_13.10_x86_64
+        MENU LABEL Ubuntu_Server_13.10_x86_64
+        kernel ubuntu/13.10_server_x86_64/vmlinuz
+	append initrd=ubuntu/13.10_server_x86_64/initrd.gz root=/dev/ram0  ramdisk_size=100000
+	
+LABEL Ubuntu_Server_14.04_x86_64
+        MENU LABEL Ubuntu_Server_14.04_x86_64
+	kernel ubuntu/14.04_server_x86_64/vmlinuz
+	append initrd=ubuntu/14.04_server_x86_64/initrd.gz root=/dev/ram0  ramdisk_size=100000
+
+LABEL Ubuntu_Server_14.04_i386
+        MENU LABEL Ubuntu_Server_14.04_i386
+        kernel ubuntu/14.04_server_i386/vmlinuz
+        append initrd=ubuntu/14.04_server_i386/initrd.gz root=/dev/ram0  ramdisk_size=100000
+
+LABEL Ubuntu_Server_14.10_x86_64
+        MENU LABEL Ubuntu_Server_14.10_x86_64
+        kernel ubuntu/14.10_server_x86_64/linux
+        append initrd=ubuntu/14.10_server_x86_64/initrd.gz root=/dev/ram0  ramdisk_size=100000
+        
+        
+LABEL Ubuntu_Server_15.10_x86_64
+        MENU LABEL Ubuntu_Server_15.10_x86_64
+        kernel ubuntu/15.10_server_x86_64/linux
+        append initrd=ubuntu/15.10_server_x86_64/initrd.gz root=/dev/ram0  ramdisk_size=100000
+        
+
+LABEL Fedora_20_x86_64
+        MENU LABEL Fedora_20_x86_64
+        kernel fedora/20_x86_64/vmlinuz
+        append initrd=fedora/20_x86_64/initrd.img repo=http://192.168.100.10/fedora/20_x86_64 ramdisk_size=100000
+                        
+        
+LABEL Debian_6.0.10_x86_64
+        MENU LABEL Debian_6.0.10_x86_64
+        kernel debian/6_x86_64/linux
+        append  initrd=debian/6_x86_64/initrd.gz root=/dev/ram0  ramdisk_size=100000
+
+LABEL Debian_6.0.10_i386
+        MENU LABEL Debian_6.0.10_i386
+        kernel debian/6_i386/linux
+        append  initrd=debian/6_i386/initrd.gz root=/dev/ram0  ramdisk_size=100000
+                                
+LABEL Debian_7.0.6_x86_64
+        MENU LABEL Debian_7.0.6_x86_64
+	kernel debian/7.0.6_x86_64/linux
+        append  initrd=debian/7.0.6_x86_64/initrd.gz root=/dev/ram0  ramdisk_size=100000
+        
+LABEL Debian_7.0.6_i386
+        MENU LABEL Debian_7.0.6_i386
+        kernel debian/7.0.6_i386/linux
+	append  initrd=debian/7.0.6_i386/initrd.gz root=/dev/ram0  ramdisk_size=100000
+	
+	
+LABEL Debian_7.8.0_i386
+        MENU LABEL Debian_7.8.0_i386
+	kernel memdisk
+	 append iso raw initrd=debian/7.8.0_i386/mini.iso ramdisk_size=100000
+	 
+	
+	                
+                            
+LABEL Debian_7.8.0_x86_64
+        MENU LABEL Debian_7.8.0_x86_64
+	#kernel memdisk
+        #append iso raw initrd=debian/7.8.0_x86_64/mini.iso ramdisk_size=100000
+	kernel debian/7.8.0_x86_64/linux
+	append  initrd=debian/7.8.0_x86_64/initrd.gz root=/dev/ram0  ramdisk_size=100000
+	        
+	
+	    
+LABEL Debian_8.0.0_x86_64
+        MENU LABEL Debian_8.0.0_x86_64
+        kernel memdisk
+         append iso raw initrd=debian/8.0.0_x86_64/mini.iso ramdisk_size=100000
+        
+#LABEL Debian_8.2.0_x86_64
+#        MENU LABEL Debian_8.2.0_x86_64
+#        kernel memdisk
+#	append  initrd=debian/8.2.0_x86_64/mini.iso root=/dev/ram0  ramdisk_size=100000
+
+LABEL Debian_8.3.0_x86_64
+        MENU LABEL Debian_8.3.0_x86_64
+	kernel debian/8.2.0_x86_64/linux
+        append  initrd=debian/8.2.0_x86_64/initrd.gz root=/dev/ram0  ramdisk_size=100000
+                
+
+LABEL FreeBSD_9.2_RELEASE_amd64
+    menu LABEL FreeBSD_9.2_AMD64
+    kernel memdisk
+    append iso raw initrd=freebsd/mfsbsd-9.2-release-amd64.iso ramdisk_size=100000
+
+LABEL FreeBSD_9.2_RELEASE_i386
+    menu LABEL FreeBSD_9.2_i386
+    kernel memdisk
+    append iso raw initrd=freebsd/mfsbsd-9.2-release-i386.iso ramdisk_size=100000
+    
+LABEL FreeBSD_10_RELEASE_amd64
+    menu LABEL FreeBSD_10.0_amd64
+    kernel memdisk
+    append iso raw initrd=freebsd/mfsbsd-10.0-release-amd64.iso ramdisk_size=100000
+    
+LABEL FreeBSD_10_RELEASE_i386
+    menu LABEL FreeBSD_10.0_i386
+    kernel memdisk
+    append iso raw initrd=freebsd/mfsbsd-10.0-release-i386.iso ramdisk_size=100000
+    
+LABEL FreeBSD_10.1_RELEASE_amd64
+    menu LABEL FreeBSD_10.1_amd64
+    kernel memdisk
+    append iso raw initrd=freebsd/mfsbsd-10.1-amd64.iso ramdisk_size=100000
+            
+    
+LABEL FreeBSD_8.4_RELEASE_i386
+    menu LABEL FreeBSD_8.4_i386
+    kernel memdisk
+    append iso raw initrd=freebsd/mfsbsd-8.4-release-i386.iso ramdisk_size=100000
+
+
+LABEL Windows_2008_2012
+    menu LABEL Windows_2008_R2 and Windows_2012_R2
+    kernel win/startrom.0
+    append win/bootmgr.exe
+    
+label GParted Live
+    MENU LABEL GParted Live
+    kernel gparted/vmlinuz
+    append initrd=gparted/initrd.img boot=live config union=aufs noswap noprompt vga=788 fetch=http://192.168.100.10/filesystem.squashfs
+
+#LABEL Ubuntu Livecd
+#    MENU LABEL Ubuntu Livecd
+#    kernel ubuntu/14.10_desktop_x86_64/linux
+#    append root=/dev/ram0 boot=casper netboot=nfs nfsroot=192.168.100.10:/var/www/html/ubuntu_livecd initrd=ubuntu/14.10_desktop_x86_64/initrd.lz quiet splash --
+    
+LABEL live-debian
+    MENU LABEL My Live Debian
+    KERNEL debian/live/live/vmlinuz
+    INITRD debian/live/live/initrd.img
+    APPEND boot=live netboot=nfs nfsroot=192.168.100.10:/tftpboot/debian/live
